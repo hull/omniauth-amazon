@@ -20,6 +20,10 @@ module OmniAuth
         :scope => 'profile postal_code'
       }
 
+      def callback_url
+        full_host + script_name + callback_path
+      end
+
       def build_access_token
         token_params = {
           :redirect_uri => callback_url.split('?').first,
